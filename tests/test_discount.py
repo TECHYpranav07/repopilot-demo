@@ -1,5 +1,5 @@
 import pytest
-from src.discount import apply_discount
+from src.discount import apply_discount, greet
 
 def test_apply_valid_discount():
     assert apply_discount(100.0, "SAVE10") == 90.0
@@ -14,3 +14,10 @@ def test_apply_unknown_coupon_should_not_crash():
 def test_price_should_never_be_negative():
     """Negative prices or excessive discounts should floor at 0.0."""
     assert apply_discount(-10.0, "SAVE10") == 0.0
+
+def test_greet_function():
+    """Test the greet function with various inputs."""
+    assert greet("Alice") == "Hello, Alice!"
+    assert greet("Bob") == "Hello, Bob!"
+    assert greet("") == "Hello, !"
+    assert greet("Dr. Smith") == "Hello, Dr. Smith!"

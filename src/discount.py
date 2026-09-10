@@ -23,3 +23,14 @@ def apply_discount(price: float, coupon_code: str) -> float:
     rate = COUPON_RATES.get(coupon_code, 0.0)
     discount = calculate_discount_amount(price, rate)
     return max(0.0, price - discount)
+
+def greet(name: str) -> str:
+    """
+    Returns a greeting message for the given name.
+
+    Args:
+        name (str): The name of the person to greet.
+
+    Returns: str: A greeting message in the format "Hello, {name}!".
+    """
+    return f"Hello, {name}!"
