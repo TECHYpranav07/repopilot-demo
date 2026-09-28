@@ -20,6 +20,17 @@ def apply_discount(price: float, coupon_code: str) -> float:
     2. If price is negative or discount exceeds price, final price should not be negative.
     """
     # Bug: Directly indexing dictionary causes KeyError on unknown coupons
-    rate = COUPON_RATES[coupon_code]
+    rate = COUPON_RATES.get(coupon_code, 0.0)
     discount = calculate_discount_amount(price, rate)
-    return price - discount
+    return max(0.0, price - discount)
+
+def greet(name: str) -> str:
+    """
+    Returns a greeting message for the given name.
+
+    Args:
+        name (str): The name of the person to greet.
+
+    Returns: str: A greeting message in the format "Hello, {name}!".
+    """
+    return f"Hello, {name}!"
